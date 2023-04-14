@@ -1,2 +1,4 @@
-package com.pro.sky.usertest_junit.UserTest;public class UserTest {
+package com.pro.sky.usertest_junit.UserTest;
+
+public class UserTest {
 }
