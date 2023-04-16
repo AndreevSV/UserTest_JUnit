@@ -19,7 +19,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        if (email.contains("'@'") && email.contains("'@'")) {
+        if (email.contains("@") && email.contains(".")) {
             this.email = email;
         } else throw new IllegalArgumentException("email is not correct" + email);
     }

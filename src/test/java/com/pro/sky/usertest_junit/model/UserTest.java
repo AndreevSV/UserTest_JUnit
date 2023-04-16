@@ -32,7 +32,7 @@ public class UserTest {
     public static final String LOGIN_BLANK = null;
     public static final String EMAIL_CORRECT = "ArtemKlimov@mail.ru";
     public static final String EMAIL_BLANK = null;
-    public static final String EMAIL_WRONG = "@artem@klimov.";
+    public static final String EMAIL_WRONG = "artemklimov";
 
     @Test
     public void shouldCreatUserWithParameters() {
