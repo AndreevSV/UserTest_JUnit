@@ -3,7 +3,6 @@ package com.pro.sky.usertest_junit.model;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
@@ -12,11 +11,16 @@ public class User {
 
     @Size(max = 10)
     private String login;
-    @Pattern(regexp = "^[^@.]+@[^@.]+\\.[^@.]+$", message = "Incorrect e-mail, you should use '@' and '.'")
     private String email;
 
-    public User(String loginCorrect, String emailCorrect) {
-        this.login = loginCorrect;
-        this.email = emailCorrect;
+    public User(String login, String email) {
+        this.login = login;
+        setEmail(email);
+    }
+
+    public void setEmail(String email) {
+        if (email.contains("'@'") && email.contains("'@'")) {
+            this.email = email;
+        } else throw new IllegalArgumentException("email is not correct" + email);
     }
 }

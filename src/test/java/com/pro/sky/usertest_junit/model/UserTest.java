@@ -23,34 +23,39 @@
 
 package com.pro.sky.usertest_junit.model;
 
-import com.pro.sky.usertest_junit.Constaints.UserTestConstants;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class UserTest {
 
+    public static final String LOGIN_CORRECT = "korobka";
+    public static final String LOGIN_BLANK = null;
+    public static final String EMAIL_CORRECT = "ArtemKlimov@mail.ru";
+    public static final String EMAIL_BLANK = null;
+    public static final String EMAIL_WRONG = "@artem@klimov.";
+
     @Test
     public void shouldCreatUserWithParameters() {
 
         User user = new User();
-        user.setLogin(UserTestConstants.LOGIN_CORRECT);
-        user.setEmail(UserTestConstants.EMAIL_CORRECT);
+        user.setLogin(LOGIN_CORRECT);
+        user.setEmail(EMAIL_CORRECT);
 
-        Assertions.assertEquals(UserTestConstants.LOGIN_CORRECT, user.getLogin());
-        Assertions.assertEquals(UserTestConstants.EMAIL_CORRECT, user.getEmail());
+        Assertions.assertEquals(LOGIN_CORRECT, user.getLogin());
+        Assertions.assertEquals(EMAIL_CORRECT, user.getEmail());
     }
 
     @Test
     public void shouldCreateUserWithoutParameters() {
         User user = new User();
 
-        Assertions.assertEquals(UserTestConstants.LOGIN_BLANK, user.getLogin());
-        Assertions.assertEquals(UserTestConstants.EMAIL_BLANK, user.getEmail());
+        Assertions.assertEquals(LOGIN_BLANK, user.getLogin());
+        Assertions.assertEquals(EMAIL_BLANK, user.getEmail());
     }
 
     @Test
     public void shouldTestEmailToRight() {
-        Assertions.assertThrows(Exception.class, () -> new  User(UserTestConstants.LOGIN_CORRECT, UserTestConstants.EMAIL_WRONG));
+        Assertions.assertThrows(Exception.class, () -> new  User(LOGIN_CORRECT, EMAIL_WRONG));
     }
 
 }
