@@ -8,10 +8,10 @@ import javax.validation.constraints.Size;
 @Data
 @RequiredArgsConstructor
 public class User {
-
     @Size(max = 10)
     private String login;
     private String email;
+    private String name;
 
     public User(String login, String email) {
         this.login = login;
@@ -22,5 +22,11 @@ public class User {
         if (email.contains("@") && email.contains(".")) {
             this.email = email;
         } else throw new IllegalArgumentException("email is not correct" + email);
+    }
+
+    public User(String login, String email, String name) {
+        this.login = login;
+        this.email = email;
+        this.name = name;
     }
 }
