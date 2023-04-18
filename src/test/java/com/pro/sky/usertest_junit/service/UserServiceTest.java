@@ -2,6 +2,7 @@ package com.pro.sky.usertest_junit.service;
 
 import com.pro.sky.usertest_junit.model.User;
 import com.pro.sky.usertest_junit.repository.UserDao;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,13 +31,16 @@ public class UserServiceTest {
     @Test
     public void shouldReturnExistUser() {
         userDaoMock.addToUserList();
-        when(out.checkUserExist(USER_NAME_CORRECT)).thenReturn(true);
+        when(userDaoMock.getUserByName(USER_NAME_CORRECT)).thenReturn(USER_CORRECT);
+        Assertions.assertTrue(out.checkUserExist(USER_NAME_CORRECT));
     }
 
     @Test
     public void shouldReturnNullUser() {
         userDaoMock.addToUserList();
-        when(out.checkUserExist(USER_NAME_INCORRECT)).thenReturn(false);
+        when(userDaoMock.getUserByName(USER_NAME_INCORRECT)).thenReturn(null);
+        Assertions.assertFalse(out.checkUserExist(USER_NAME_INCORRECT));
+
     }
 
 
