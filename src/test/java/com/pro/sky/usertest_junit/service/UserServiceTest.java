@@ -30,15 +30,13 @@ public class UserServiceTest {
 
     @Test
     public void shouldReturnExistUser() {
-        userDaoMock.addToUserList();
         when(userDaoMock.getUserByName(USER_NAME_CORRECT)).thenReturn(USER_CORRECT);
         Assertions.assertTrue(out.checkUserExist(USER_NAME_CORRECT));
     }
 
     @Test
     public void shouldReturnNullUser() {
-        userDaoMock.addToUserList();
-        when(userDaoMock.getUserByName(USER_NAME_INCORRECT)).thenReturn(null);
+        when(userDaoMock.getUserByName(USER_NAME_INCORRECT)).thenReturn(USER_INCORRECT);
         Assertions.assertFalse(out.checkUserExist(USER_NAME_INCORRECT));
 
     }
